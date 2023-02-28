@@ -1,37 +1,32 @@
 import string
 
-alfabe = string.ascii_letters + string.punctuation
-# print(alfabe)
-alfabechar = [*alfabe]
+alphabet = string.ascii_letters + string.punctuation
+alphabetchar = [*alphabet]
 
 
 def sifre(txt):
     textchar = [*txt]
     yeniint = []
     ciphertxt = ""
-    # print(textchar)
-    # print(alfabechar)
     for first in textchar:
         for sc in alfabechar:
             if first == sc:
-                asciint = alfabechar.index(sc)
+                asciint = alphabetchar.index(sc)
                 yeniint.append(asciint + 66)
-    # print(yeniint)
     for i in yeniint:
         ciphertxt = ciphertxt + "".join(chr(i))
 
     return ciphertxt
 
 
-def sifreCoz(cozulecekMesaj):
-    cozint = []
+def sifreCoz(msg):
+    ascii_int = []
     coztext = ""
-    for t in cozulecekMesaj:
-        cozint.append("".join(str(ord(t))))
-    gec = [int(item) for item in cozint]
-    yeni = [int(z - 66) for z in gec]
-    # print(yeni)
-    for son in yeni:
+    for t in msg:
+        ascii_int.append("".join(str(ord(t))))
+    gec = [int(item) for item in ascii_int]
+    final_ascii_number = [int(z - 66) for z in gec]
+    for son in final_ascii_number:
         coztext = coztext + alfabechar[son]
     return coztext
 
